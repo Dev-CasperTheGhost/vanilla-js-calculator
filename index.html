@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla JS Calculator</title>
+    <style>
+      .calculator {
+        width: 250px;
+        height: 400px;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      input {
+        margin-top: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 220px;
+        font-size: 20px;
+        background-color: white;
+      }
+      .buttons {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 10px;
+        justify-content: center;
+      }
+      button {
+          cursor: pointer;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input disabled placeholder="enter value" id="field" />
+
+      <div class="buttons">
+        <button onclick="clearField()">C</button>
+        <button onclick="calculate('/')">:</button>
+        <button onclick="back()">Back</button>
+        <button onclick="calculate('%')">%</button>
+
+        <button onclick="calculate(7)">7</button>
+        <button onclick="calculate(8)">8</button>
+        <button onclick="calculate(9)">9</button>
+        <button onclick="calculate('*')">X</button>
+
+        <button onclick="calculate(4)">4</button>
+        <button onclick="calculate(5)">5</button>
+        <button onclick="calculate(6)">6</button>
+        <button onclick="calculate('-')">-</button>
+
+        <button onclick="calculate(1)">1</button>
+        <button onclick="calculate(2)">2</button>
+        <button onclick="calculate(3)">3</button>
+        <button onclick="calculate('+')">+</button>
+
+        <button onclick="calculate(0)" onclick="calculate(0)">0</button>
+        <button onclick="calculate('.')">.</button>
+        <button onclick="equal()">=</button>
+      </div>
+    </div>
+
+    <script>
+      const field = document.getElementById('field');
+      function calculate(num) {
+        field.value += num;
+      }
+
+      function equal() {
+        let answer = eval(document.getElementById('field').value);
+        if (answer === Infinity) {
+          answer = 0;
+        }
+
+        document.getElementById('field').value = answer;
+      }
+
+      function clearField() {          
+        field.value = ""
+      }
+
+      function back() {
+          field.value = field.value.slice(0, -1)
+      }
+    </script>
+  </body>
+</html>
