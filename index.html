@@ -4,33 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla JS Calculator</title>
-    <style>
-      .calculator {
-        width: 250px;
-        height: 400px;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      input {
-        margin-top: 20px;
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 220px;
-        font-size: 20px;
-        background-color: white;
-      }
-      .buttons {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        gap: 10px;
-        justify-content: center;
-      }
-      button {
-          cursor: pointer;
-        width: 50px;
-        height: 50px;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="calculator">
@@ -38,8 +12,8 @@
 
       <div class="buttons">
         <button onclick="clearField()">C</button>
-        <button onclick="calculate('/')">:</button>
         <button onclick="back()">Back</button>
+        <button onclick="calculate('/')">:</button>
         <button onclick="calculate('%')">%</button>
 
         <button onclick="calculate(7)">7</button>
@@ -73,17 +47,19 @@
         let answer = eval(document.getElementById('field').value);
         if (answer === Infinity) {
           answer = 0;
+        } else if (answer === undefined) {
+          answer = '';
         }
 
         document.getElementById('field').value = answer;
       }
 
-      function clearField() {          
-        field.value = ""
+      function clearField() {
+        field.value = '';
       }
 
       function back() {
-          field.value = field.value.slice(0, -1)
+        field.value = field.value.slice(0, -1);
       }
     </script>
   </body>
